@@ -12,4 +12,5 @@ A lightweight and simple workflow/pipeline in R for extracting gene lists of int
 
 extract_GO_genes
 compile_gene_lists
+extract_msigdb_genes
 
