@@ -161,42 +161,6 @@ library(clusterProfiler)
 library(org.Hs.eg.db)
 library(org.Mm.eg.db)
 
-# Quick check: print versions
-pkgs &lt;- c("pheatmap","RColorBrewer","dplyr","ggplot2","tidyverse","patchwork",
-          "matrixStats","biomaRt","clusterProfiler","org.Hs.eg.db","org.Mm.eg.db")
-vers &lt;- sapply(pkgs, function(p) as.character(utils::packageVersion(p)))
-data.frame(package = pkgs, version = vers, row.names = NULL)
-</code>
-</pre>
-
-<!-- ----------------------------- -->
-<!-- Optional: reproducibility     -->
-<!-- ----------------------------- -->
-<details>
-  <summary><strong>Optional</strong>: lock package versions with <code>renv</code> (project-local library)</summary>
-  <p style="margin:0.5rem 0 0;">
-    For fully reproducible environments, initialize <code>renv</code> once and snapshot:
-  </p>
-  <pre><code class="language-r">
-# Initialize renv in this project (once)
-if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
-renv::init(bare = TRUE)
-
-# Install deps using the blocks above, then record exact versions
-renv::snapshot()
-  </code></pre>
-  <p style="margin:0.25rem 0 0;">
-    Anyone cloning the repository can run <code>renv::restore()</code> to get the same package versions.
-  </p>
-</details>
-
-<p style="font-size:0.9em;color:#666;margin-top:0.75rem;">
-  <em>Notes.</em> Listing both <code>dplyr</code> and <code>tidyverse</code> is intentional: while
-  <code>tidyverse</code> includes <code>dplyr</code>, the workflow may import <code>dplyr</code> directly for clarity.
-  If you prefer fewer top-level dependencies, you can omit <code>tidyverse</code> and load the specific packages you use.
-</p>
-
-
 ## Repository structure
 
 extract_GO_genes
