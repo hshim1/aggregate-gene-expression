@@ -3,7 +3,6 @@
 Workflow created by: Ha-Na Shim
 Date: 09/03/2025
 
-
 ## Tools/packages used
 
 <!-- Horizontal badges -->
@@ -70,15 +69,83 @@ A lightweight and simple workflow/pipeline in R for extracting gene lists of int
 
 extract_GO_genes
 
-#' The function connects to Ensembl BioMart to retrieve current gene annotations.
-#' When \code{include_descendants = TRUE}, the function performs hierarchical 
-#' expansion using the GO.db package to capture genes from all descendant terms,
-#' providing comprehensive coverage of biological concepts.
-#' 
-#' Gene symbols are deduplicated and filtered to remove empty entries. The function
-#' generates standardized variable names from GO term descriptions for consistent
-#' downstream use.
+<h2>Extracting GO Gene Sets with <code>extract_GO_genes</code></h2>
 
-compile_gene_lists
-extract_msigdb_genes
+<p>
+Use <code>extract_GO_genes()</code> to retrieve genes associated with one or more Gene Ontology (GO) terms from Ensembl BioMart.
+It can optionally expand each term to include <strong>descendant terms</strong> in the GO hierarchy, supports <strong>BP / MF / CC</strong> ontologies,
+and returns results as a <em>list</em>, <em>vector</em>, or <em>data.frame</em>.
+</p>
+
+<pre>
+<code class="language-r">
+# Example: Biological process "muscle structure development" (GO:0061061)
+muscle_development <- extract_GO_genes(
+  "GO:0061061",
+  include_descendants = TRUE,
+  organism = "human",
+  ontology = "BP",
+  output_format = "list",
+  export_csv = FALSE,
+  output_dir = "GO_gene_lists/"
+)
+</code>
+</pre>
+
+<details>
+  <summary><strong>Function overview</strong></summary>
+  <ul>
+    <li><strong>What it does:</strong> Connects to Ensembl BioMart and fetches genes annotated to the specified GO term(s).
+        If <code>include_descendants = TRUE</code>, it expands the query to all descendant terms using <code>GO.db</code> and deduplicates gene symbols.</li>
+    <li><strong>Why it’s useful:</strong> Produces <em>comprehensive, up-to-date</em> gene sets for biological concepts (e.g., “cell cycle”, “muscle development”).</li>
+    <li><strong>Performance note:</strong> Requires an internet connection. Large GO terms may take longer depending on Ensembl server availability.</li>
+  </ul>
+</details>
+
+<h3>Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>go_terms</code></td><td>character</td><td>—</td><td>One or more GO IDs (e.g., "GO:0061061").</td></tr>
+    <tr><td><code>organism</code></td><td>character</td><td>"human"</td><td>"human" or "mouse". Sets Ensembl dataset.</td></tr>
+    <tr><td><code>include_descendants</code></td><td>logical</td><td>TRUE</td><td>If TRUE, expands to include all descendant terms.</td></tr>
+    <tr><td><code>ontology</code></td><td>character</td><td>"BP"</td><td>GO domain: "BP" (Biological Process), "MF", or "CC".</td></tr>
+    <tr><td><code>output_format</code></td><td>character</td><td>"list"</td><td>"list" (default), "vector" (single GO), or "data.frame".</td></tr>
+    <tr><td><code>export_csv</code></td><td>logical</td><td>FALSE</td><td>If TRUE, exports results as CSVs in <code>output_dir</code>.</td></tr>
+    <tr><td><code>output_dir</code></td><td>character</td><td>"GO_gene_lists/"</td><td>Directory for CSV exports (created if missing).</td></tr>
+  </tbody>
+</table>
+
+<h3>Return Value</h3>
+<ul>
+  <li><strong>Single term + "vector"</strong> → character vector of gene symbols</li>
+  <li><strong>Single/multiple + "list"</strong> → named list of gene vectors (with metadata in <code>attr(result, "metadata")</code>)</li>
+  <li><strong>"data.frame"</strong> → table with columns: gene_symbol, go_label, go_id, go_name</li>
+</ul>
+
+<pre>
+<code class="language-r">
+# Example: Accessing metadata
+md <- attr(muscle_development, "metadata")
+str(md[1])
+</code>
+</pre>
+
+<hr>
+
+<p><strong>References:</strong><br>
+Ashburner et al., <em>Nat Genet</em>, 2000. <br>
+The Gene Ontology Consortium, <em>Nucleic Acids Res</em>, 2019.
+</p>
+
+
+
 
