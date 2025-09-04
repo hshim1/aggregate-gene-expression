@@ -70,6 +70,139 @@ A lightweight and simple workflow/pipeline in R for extracting gene lists of int
 
 ## Required packages and dependencies
 
+<!-- ====================================================== -->
+<!--        Required Packages / Dependencies (R)           -->
+<!-- ====================================================== -->
+
+<h2 id="dependencies">Required packages / dependencies</h2>
+
+<p>
+  This workflow uses a small set of CRAN and Bioconductor packages. The install
+  instructions below follow common patterns used across well-maintained R
+  repositories: install CRAN packages with <code>install.packages()</code>, install
+  Bioconductor packages with <code>BiocManager::install()</code>, and only install what’s
+  missing. A quick “load &amp; verify” block is included at the end.
+</p>
+
+<!-- ------------------------------- -->
+<!-- Compact summary (what & source) -->
+<!-- ------------------------------- -->
+<table style="width:100%; border-collapse:collapse;">
+  <thead>
+    <tr>
+      <th style="text-align:left; border-bottom:1px solid #ddd;">Package</th>
+      <th style="text-align:left; border-bottom:1px solid #ddd;">Source</th>
+      <th style="text-align:left; border-bottom:1px solid #ddd;">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>pheatmap</code></td><td>CRAN</td><td>Publication-quality heatmaps</td></tr>
+    <tr><td><code>RColorBrewer</code></td><td>CRAN</td><td>Color palettes for figures</td></tr>
+    <tr><td><code>dplyr</code></td><td>CRAN</td><td>Data manipulation (part of tidyverse)</td></tr>
+    <tr><td><code>ggplot2</code></td><td>CRAN</td><td>Grammar of graphics plotting</td></tr>
+    <tr><td><code>tidyverse</code></td><td>CRAN</td><td>Data science toolkit (ggplot2, dplyr, readr, etc.)</td></tr>
+    <tr><td><code>patchwork</code></td><td>CRAN</td><td>Compose multiple ggplots</td></tr>
+    <tr><td><code>matrixStats</code></td><td>CRAN</td><td>Fast row/column summaries for matrices</td></tr>
+    <tr><td><code>biomaRt</code></td><td>Bioconductor</td><td>Programmatic access to Ensembl</td></tr>
+    <tr><td><code>clusterProfiler</code></td><td>Bioconductor</td><td>Enrichment analysis (GO/KEGG/Reactome/MSigDB)</td></tr>
+    <tr><td><code>org.Hs.eg.db</code></td><td>Bioconductor</td><td>Human gene annotations</td></tr>
+    <tr><td><code>org.Mm.eg.db</code></td><td>Bioconductor</td><td>Mouse gene annotations</td></tr>
+    <tr><td><code>BiocManager</code></td><td>CRAN</td><td>Installer for Bioconductor packages</td></tr>
+  </tbody>
+</table>
+
+<!-- ----------------------------- -->
+<!-- Install: CRAN + Bioc missing  -->
+<!-- ----------------------------- -->
+<h3>Install (CRAN + Bioconductor)</h3>
+
+<pre>
+<code class="language-r">
+# --- CRAN packages ---
+cran_pkgs &lt;- c(
+  "pheatmap", "RColorBrewer", "dplyr", "ggplot2",
+  "tidyverse", "patchwork", "matrixStats", "BiocManager"
+)
+
+# Install CRAN packages that are not already present
+to_install_cran &lt;- setdiff(cran_pkgs, rownames(installed.packages()))
+if (length(to_install_cran)) {
+  install.packages(to_install_cran, Ncpus = getOption("Ncpus", 1L))
+}
+
+# --- Bioconductor packages ---
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+
+bioc_pkgs &lt;- c("biomaRt", "clusterProfiler", "org.Hs.eg.db", "org.Mm.eg.db")
+
+# Install Bioconductor packages that are not already present
+to_install_bioc &lt;- setdiff(bioc_pkgs, rownames(installed.packages()))
+if (length(to_install_bioc)) {
+  BiocManager::install(to_install_bioc, update = FALSE, ask = FALSE)
+}
+</code>
+</pre>
+
+<!-- ----------------------------- -->
+<!-- Load & verify                 -->
+<!-- ----------------------------- -->
+<h3>Load &amp; verify</h3>
+
+<pre>
+<code class="language-r">
+# Load libraries used throughout the workflow
+library(pheatmap)
+library(RColorBrewer)
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
+library(patchwork)
+library(matrixStats)
+
+# Bioconductor
+library(biomaRt)
+library(clusterProfiler)
+library(org.Hs.eg.db)
+library(org.Mm.eg.db)
+
+# Quick check: print versions
+pkgs &lt;- c("pheatmap","RColorBrewer","dplyr","ggplot2","tidyverse","patchwork",
+          "matrixStats","biomaRt","clusterProfiler","org.Hs.eg.db","org.Mm.eg.db")
+vers &lt;- sapply(pkgs, function(p) as.character(utils::packageVersion(p)))
+data.frame(package = pkgs, version = vers, row.names = NULL)
+</code>
+</pre>
+
+<!-- ----------------------------- -->
+<!-- Optional: reproducibility     -->
+<!-- ----------------------------- -->
+<details>
+  <summary><strong>Optional</strong>: lock package versions with <code>renv</code> (project-local library)</summary>
+  <p style="margin:0.5rem 0 0;">
+    For fully reproducible environments, initialize <code>renv</code> once and snapshot:
+  </p>
+  <pre><code class="language-r">
+# Initialize renv in this project (once)
+if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+renv::init(bare = TRUE)
+
+# Install deps using the blocks above, then record exact versions
+renv::snapshot()
+  </code></pre>
+  <p style="margin:0.25rem 0 0;">
+    Anyone cloning the repository can run <code>renv::restore()</code> to get the same package versions.
+  </p>
+</details>
+
+<p style="font-size:0.9em;color:#666;margin-top:0.75rem;">
+  <em>Notes.</em> Listing both <code>dplyr</code> and <code>tidyverse</code> is intentional: while
+  <code>tidyverse</code> includes <code>dplyr</code>, the workflow may import <code>dplyr</code> directly for clarity.
+  If you prefer fewer top-level dependencies, you can omit <code>tidyverse</code> and load the specific packages you use.
+</p>
+
+
 ## Repository structure
 
 extract_GO_genes
