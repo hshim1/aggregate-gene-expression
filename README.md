@@ -69,6 +69,16 @@ A lightweight and simple workflow/pipeline in R for extracting gene lists of int
 ## function to extract gene ontology ids from GO database
 
 extract_GO_genes
+
+#' The function connects to Ensembl BioMart to retrieve current gene annotations.
+#' When \code{include_descendants = TRUE}, the function performs hierarchical 
+#' expansion using the GO.db package to capture genes from all descendant terms,
+#' providing comprehensive coverage of biological concepts.
+#' 
+#' Gene symbols are deduplicated and filtered to remove empty entries. The function
+#' generates standardized variable names from GO term descriptions for consistent
+#' downstream use.
+
 compile_gene_lists
 extract_msigdb_genes
 
