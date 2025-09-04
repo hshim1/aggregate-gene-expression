@@ -81,7 +81,7 @@ compile_gene_lists
 <h2>Extracting GO Gene Sets with <code>extract_GO_genes</code></h2>
 
 <p>
-Use <code>extract_GO_genes()</code> to retrieve genes associated with one or more Gene Ontology (GO) terms from Ensembl BioMart.
+<code>extract_GO_genes()</code> provides functionality to retrieve gene lists associated with one or more Gene Ontology (GO) terms via Ensembl BioMart.
 It can optionally expand each term to include <strong>descendant terms</strong> in the GO hierarchy, supports <strong>BP / MF / CC</strong> ontologies,
 and returns results as a <em>list</em>, <em>vector</em>, or <em>data.frame</em>.
 </p>
