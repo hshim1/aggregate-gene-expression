@@ -44,11 +44,6 @@ Date: 09/03/2025
   <img src="https://raw.githubusercontent.com/Bioconductor/BiocStickers/master/clusterProfiler/clusterProfiler.png" height="125" alt="clusterProfiler hex">
 </a>
 
-<!-- Gene Ontology database (GO) -->
-<a href="http://geneontology.org/">
-  <img src="https://avatars.githubusercontent.com/u/4391454?s=200&v=4" height="125" alt="GO database logo">
-</a>
-
 </p>
 
 <!-- Badge image refs -->
