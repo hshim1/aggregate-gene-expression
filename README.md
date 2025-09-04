@@ -148,10 +148,7 @@ BiocManager::install(c(
 <h2 id="repo-structure">Repository structure</h2>
 
 <p>
-  This repository is organized for clarity and reproducibility. Reusable functions live in
-  <code>functions/</code>, a worked example is provided in <code>example_workflow/</code>, and any
-  precomputed gene lists are stored in <code>extracted_gene_lists/</code>. A quick tree and
-  brief descriptions are below.
+  The structure of this repository and location of R scripts for functions used in this workflow are shown below.
 </p>
 
 <!-- Compact tree view -->
