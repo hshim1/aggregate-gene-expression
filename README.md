@@ -5,33 +5,48 @@ Date: 09/03/2025
 
 ## Tools/packages used
 
+## Tools / Packages Used
+
 <!-- Horizontal badges -->
-[![R][R-badge]][R-url] [![RStudio][RStudio-badge]][RStudio-url] [![pheatmap][pheatmap-badge]][pheatmap-url] [![ggplot2][ggplot2-badge]][ggplot2-url] [![tidyverse][tidyverse-badge]][tidyverse-url] [![nf-core][nfcore-badge]][nfcore-url] [![Snakemake][Snakemake-badge]][Snakemake-url] [![Salmon][Salmon-badge]][Salmon-url] [![Kallisto][Kallisto-badge]][Kallisto-url] [![MultiQC][MultiQC-badge]][MultiQC-url]
+[![R][R-badge]][R-url] 
+[![RStudio][RStudio-badge]][RStudio-url] 
+[![tidyverse][tidyverse-badge]][tidyverse-url] 
+[![ggplot2][ggplot2-badge]][ggplot2-url] 
+[![biomaRt][biomaRt-badge]][biomaRt-url] 
+[![clusterProfiler][clusterProfiler-badge]][clusterProfiler-url] 
+[![MSigDB][MSigDB-badge]][MSigDB-url] 
+[![KEGG][KEGG-badge]][KEGG-url] 
+[![Reactome][Reactome-badge]][Reactome-url] 
 
 <p align="center">
 
-<a href="https://bioconductor.org/packages/DESeq2">
-  <img src="https://raw.githubusercontent.com/Bioconductor/BiocStickers/master/DESeq2/DESeq2.png" height="125" alt="DESeq2 hex">
+<!-- R + RStudio -->
+<a href="https://www.r-project.org/">
+  <img src="https://raw.githubusercontent.com/rstudio/hex-stickers/main/PNG/R.png" height="125" alt="R hex">
 </a>
-<a href="https://bioconductor.org/packages/clusterProfiler">
-  <img src="https://raw.githubusercontent.com/Bioconductor/BiocStickers/master/clusterProfiler/clusterProfiler.png" height="125" alt="clusterProfiler hex">
+<a href="https://posit.co/products/open-source/rstudio/">
+  <img src="https://raw.githubusercontent.com/rstudio/hex-stickers/main/PNG/RStudio.png" height="125" alt="RStudio hex">
 </a>
 
-<!-- Tidyverse family (official hex-stickers repo) -->
+<!-- tidyverse family -->
 <a href="https://ggplot2.tidyverse.org/">
   <img src="https://raw.githubusercontent.com/rstudio/hex-stickers/main/SVG/ggplot2.svg" height="125" alt="ggplot2 hex">
 </a>
 <a href="https://www.tidyverse.org/">
   <img src="https://raw.githubusercontent.com/rstudio/hex-stickers/main/SVG/tidyverse.svg" height="125" alt="tidyverse hex">
 </a>
-<a href="https://dplyr.tidyverse.org/">
-  <img src="https://raw.githubusercontent.com/rstudio/hex-stickers/main/SVG/dplyr.svg" height="125" alt="dplyr hex">
+
+<!-- Bioconductor packages -->
+<a href="https://bioconductor.org/packages/biomaRt">
+  <img src="https://raw.githubusercontent.com/Bioconductor/BiocStickers/master/biomaRt/biomaRt.png" height="125" alt="biomaRt hex">
+</a>
+<a href="https://bioconductor.org/packages/clusterProfiler">
+  <img src="https://raw.githubusercontent.com/Bioconductor/BiocStickers/master/clusterProfiler/clusterProfiler.png" height="125" alt="clusterProfiler hex">
 </a>
 
-<!-- Bioconductor hexes -->
-</a>
-<a href="https://bioconductor.org/packages/edgeR">
-  <img src="https://raw.githubusercontent.com/Bioconductor/BiocStickers/master/edgeR/edgeR.png" height="125" alt="edgeR hex">
+<!-- Gene Ontology database (GO) -->
+<a href="http://geneontology.org/">
+  <img src="https://avatars.githubusercontent.com/u/4391454?s=200&v=4" height="125" alt="GO database logo">
 </a>
 
 </p>
@@ -39,35 +54,37 @@ Date: 09/03/2025
 <!-- Badge image refs -->
 [R-badge]: https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white
 [RStudio-badge]: https://img.shields.io/badge/RStudio-75AADB?style=for-the-badge&logo=rstudio&logoColor=white
-[pheatmap-badge]: https://img.shields.io/cran/v/pheatmap?style=for-the-badge&label=pheatmap
-[ggplot2-badge]: https://img.shields.io/cran/v/ggplot2?style=for-the-badge&label=ggplot2
 [tidyverse-badge]: https://img.shields.io/cran/v/tidyverse?style=for-the-badge&label=tidyverse
-[nfcore-badge]: https://img.shields.io/badge/nf--core-pipelines-00A98F?style=for-the-badge
-[Snakemake-badge]: https://img.shields.io/badge/Snakemake-workflows-3277a8?style=for-the-badge
-[Salmon-badge]: https://img.shields.io/badge/Salmon-quantification-ff8066?style=for-the-badge
-[Kallisto-badge]: https://img.shields.io/badge/kallisto-quantification-555555?style=for-the-badge
-[MultiQC-badge]: https://img.shields.io/pypi/v/multiqc?style=for-the-badge&label=MultiQC
+[ggplot2-badge]: https://img.shields.io/cran/v/ggplot2?style=for-the-badge&label=ggplot2
+[biomaRt-badge]: https://img.shields.io/badge/biomaRt-Bioconductor-3C8DBC?style=for-the-badge
+[clusterProfiler-badge]: https://img.shields.io/badge/clusterProfiler-Bioconductor-3C8DBC?style=for-the-badge
+[MSigDB-badge]: https://img.shields.io/badge/MSigDB-Molecular%20Signatures%20Database-orange?style=for-the-badge
+[KEGG-badge]: https://img.shields.io/badge/KEGG-Pathways-009688?style=for-the-badge
+[Reactome-badge]: https://img.shields.io/badge/Reactome-Pathway%20Database-006699?style=for-the-badge
 
 <!-- Link refs -->
 [R-url]: https://www.r-project.org/
 [RStudio-url]: https://posit.co/products/open-source/rstudio/
-[pheatmap-url]: https://cran.r-project.org/package=pheatmap
-[ggplot2-url]: https://ggplot2.tidyverse.org/
 [tidyverse-url]: https://www.tidyverse.org/
-[nfcore-url]: https://nf-co.re/
-[Snakemake-url]: https://snakemake.readthedocs.io/
-[Salmon-url]: https://combine-lab.github.io/salmon/
-[Kallisto-url]: https://pachterlab.github.io/kallisto/
-[MultiQC-url]: https://multiqc.info/
+[ggplot2-url]: https://ggplot2.tidyverse.org/
+[biomaRt-url]: https://bioconductor.org/packages/biomaRt/
+[clusterProfiler-url]: https://bioconductor.org/packages/clusterProfiler/
+[MSigDB-url]: https://www.gsea-msigdb.org/gsea/msigdb
+[KEGG-url]: https://www.genome.jp/kegg/
+[Reactome-url]: https://reactome.org/
+
+
 
 ## About this repository
 A lightweight and simple workflow/pipeline in R for extracting gene lists of interest from the gene ontology (GO) and MSigDB collections, as well as visualization of aggregate gene expression of a group of genes between conditions/treatments over time.
 
 ## Required packages and dependencies
 
-## Part 1: Generation of gene lists of interest from gene ontology (GO) and MSigDB databases
+## Functions in this repository
 
 extract_GO_genes
+extract_msigdb_genes
+compile_gene_lists
 
 <h2>Extracting GO Gene Sets with <code>extract_GO_genes</code></h2>
 
