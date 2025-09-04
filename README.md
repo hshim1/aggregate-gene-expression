@@ -66,7 +66,7 @@ A lightweight and simple workflow/pipeline in R for extracting gene lists of int
 
 ## Required packages and dependencies
 
-## function to extract gene ontology ids from GO database
+## Part 1: Generation of gene lists of interest from gene ontology (GO) and MSigDB databases
 
 extract_GO_genes
 
