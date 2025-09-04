@@ -68,8 +68,6 @@ Date: 09/03/2025
 ## About this repository
 A lightweight and simple workflow/pipeline in R for extracting gene lists of interest from the gene ontology (GO) and MSigDB collections, as well as visualization of aggregate gene expression of a group of genes between conditions/treatments over time.
 
-## Required packages and dependencies
-
 <!-- ====================================================== -->
 <!--        Required Packages / Dependencies (R)           -->
 <!-- ====================================================== -->
