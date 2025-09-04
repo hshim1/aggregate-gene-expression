@@ -109,9 +109,6 @@ A lightweight and simple workflow/pipeline in R for extracting gene lists of int
 <!--   Required Packages / Dependencies (R)        -->
 <!-- ============================================= -->
 
-<h2 id="dependencies">Required packages / dependencies</h2>
-<p>Install all dependencies in one step using <code>BiocManager::install()</code>:</p>
-
 <pre>
 <code class="language-r">
 BiocManager::install(c(
