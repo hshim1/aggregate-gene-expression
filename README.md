@@ -77,11 +77,7 @@ A lightweight and simple workflow/pipeline in R for extracting gene lists of int
 <h2 id="dependencies">Required packages / dependencies</h2>
 
 <p>
-  This workflow uses a small set of CRAN and Bioconductor packages. The install
-  instructions below follow common patterns used across well-maintained R
-  repositories: install CRAN packages with <code>install.packages()</code>, install
-  Bioconductor packages with <code>BiocManager::install()</code>, and only install what’s
-  missing. A quick “load &amp; verify” block is included at the end.
+  This workflow uses a small set of CRAN and Bioconductor packages.
 </p>
 
 <!-- ------------------------------- -->
