@@ -3,8 +3,6 @@
 Workflow created by: Ha-Na Shim
 Date: 09/03/2025
 
-## Tools/packages used
-
 ## Tools / Packages Used
 
 <!-- Horizontal badges -->
