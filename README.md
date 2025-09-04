@@ -105,6 +105,32 @@ A lightweight and simple workflow/pipeline in R for extracting gene lists of int
   </tbody>
 </table>
 
+<!-- ============================================= -->
+<!--   Required Packages / Dependencies (R)        -->
+<!-- ============================================= -->
+
+<h2 id="dependencies">Required packages / dependencies</h2>
+<p>Install all dependencies in one step using <code>BiocManager::install()</code>:</p>
+
+<pre>
+<code class="language-r">
+BiocManager::install(c(
+  "pheatmap",
+  "RColorBrewer",
+  "dplyr",
+  "ggplot2",
+  "tidyverse",
+  "patchwork",
+  "matrixStats",
+  "biomaRt",
+  "clusterProfiler",
+  "org.Hs.eg.db",
+  "org.Mm.eg.db"
+))
+</code>
+</pre>
+
+
 ## Repository structure
 
 extract_GO_genes
