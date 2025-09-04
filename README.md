@@ -21,9 +21,6 @@ Date: 09/03/2025
 <p align="center">
 
 <!-- R + RStudio -->
-<a href="https://www.r-project.org/">
-  <img src="https://raw.githubusercontent.com/rstudio/hex-stickers/main/PNG/R.png" height="125" alt="R hex">
-</a>
 <a href="https://posit.co/products/open-source/rstudio/">
   <img src="https://raw.githubusercontent.com/rstudio/hex-stickers/main/PNG/RStudio.png" height="125" alt="RStudio hex">
 </a>
