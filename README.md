@@ -141,9 +141,6 @@ BiocManager::install(c(
 </code>
 </pre>
 
-
-## Repository structure
-
 <!-- ======================================= -->
 <!--        Repository Structure (HTML)      -->
 <!-- ======================================= -->
