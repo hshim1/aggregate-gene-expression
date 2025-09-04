@@ -123,9 +123,7 @@ A lightweight and simple workflow/pipeline in R for extracting gene lists of int
 <!--   Required Packages / Dependencies (R)        -->
 <!-- ============================================= -->
 
-<pre>
-<code class="language-r">
-BiocManager::install(c(
+<pre style="margin:0;padding:0;"><code class="language-r" style="margin:0;padding:0;display:block;">BiocManager::install(c(
   "pheatmap",
   "RColorBrewer",
   "dplyr",
@@ -137,9 +135,8 @@ BiocManager::install(c(
   "clusterProfiler",
   "org.Hs.eg.db",
   "org.Mm.eg.db"
-))
-</code>
-</pre>
+))</code></pre>
+
 
 <!-- ======================================= -->
 <!--        Repository Structure (HTML)      -->
