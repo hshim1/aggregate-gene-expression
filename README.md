@@ -271,5 +271,215 @@ The Gene Ontology Consortium, <em>Nucleic Acids Res</em>, 2019.
   <a href="https://www.gsea-msigdb.org/gsea/msigdb/human/genesets.jsp" target="_blank" rel="noopener noreferrer">MSigDB Human Gene Sets</a>.
 </p>
 
+<!-- ======================================================= -->
+<!--        MSigDB Gene Set Extraction: README Section       -->
+<!-- ======================================================= -->
+
+<h2 id="extract-msigdb-genes">Extracting Gene Sets with <code>extract_msigdb_genes</code></h2>
+
+<p>
+  <strong>Purpose.</strong> <code>extract_msigdb_genes()</code> pulls gene sets from the
+  <a href="https://www.gsea-msigdb.org/gsea/msigdb/" target="_blank" rel="noopener">Molecular Signatures Database (MSigDB)</a>
+  and returns clean vectors or named lists ready for enrichment analyses (GSEA/fgsea, clusterProfiler) and figure workflows.
+  You can search by exact set names (e.g., <code>HALLMARK_APOPTOSIS</code>) or by a broad pattern (e.g., <code>"apoptosis"</code>),
+  restrict to specific collections (Hallmark, KEGG, Reactome, GO), choose your preferred ID type (SYMBOL/ENTREZID/ENSEMBL),
+  and optionally convert across organisms (human ↔ mouse).
+</p>
+
+<!-- ============== -->
+<!-- Quick examples -->
+<!-- ============== -->
+<h3>Quick usage</h3>
+
+<pre>
+<code class="language-r">
+# Hallmark (human, SYMBOLs)
+apoptosis_genes &lt;- extract_msigdb_genes(
+  gene_sets = "HALLMARK_APOPTOSIS",
+  organism = "human",
+  gene_id_type = "SYMBOL"
+)
+
+# KEGG glycolysis, restricting to canonical pathways (C2 &gt; CP:KEGG)
+kegg_glycolysis &lt;- extract_msigdb_genes(
+  gene_sets = "GLYCOLYSIS",
+  search_all_collections = FALSE,
+  collection = "C2",
+  subcollection = "CP:KEGG"
+)
+
+# Reactome WNT, ENTREZ IDs
+reactome_wnt &lt;- extract_msigdb_genes(
+  gene_sets = "SIGNALING_BY_WNT",
+  gene_id_type = "ENTREZID",
+  search_all_collections = FALSE,
+  collection = "C2",
+  subcollection = "CP:REACTOME"
+)
+
+# Mouse Hallmark inflammatory response
+mouse_inflammation &lt;- extract_msigdb_genes(
+  gene_sets = "HALLMARK_INFLAMMATORY_RESPONSE",
+  organism = "mouse"
+)
+
+# Cross-species conversion (human -&gt; mouse)
+mouse_emt &lt;- extract_msigdb_genes(
+  gene_sets = "HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION",
+  organism = "human",
+  convert_organism = TRUE,
+  target_organism = "mouse"
+)
+
+# Multiple sets + metadata inspection
+sets    &lt;- c("HALLMARK_P53_PATHWAY", "HALLMARK_HYPOXIA", "KEGG_CELL_CYCLE")
+results &lt;- extract_msigdb_genes(sets)
+meta    &lt;- attr(results, "metadata")
+
+# Summarize how many genes per set (requires dplyr installed)
+dplyr::bind_rows(lapply(meta, as.data.frame), .id = "set_label")
+</code>
+</pre>
+
+<!-- ================== -->
+<!-- Parameter overview -->
+<!-- ================== -->
+<h3>Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="min-width:160px;">Parameter</th>
+      <th style="min-width:110px;">Type</th>
+      <th style="min-width:110px;">Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>gene_sets</code></td>
+      <td>character</td>
+      <td>—</td>
+      <td>Exact names (e.g., <code>"HALLMARK_APOPTOSIS"</code>) or case-insensitive patterns (e.g., <code>"APOPTOSIS"</code>). Single or vector.</td>
+    </tr>
+    <tr>
+      <td><code>organism</code></td>
+      <td>character</td>
+      <td><code>"human"</code></td>
+      <td><code>"human"</code> or <code>"mouse"</code> (maps to <em>Homo sapiens</em>/<em>Mus musculus</em> in <code>msigdbr</code>).</td>
+    </tr>
+    <tr>
+      <td><code>gene_id_type</code></td>
+      <td>character</td>
+      <td><code>"SYMBOL"</code></td>
+      <td>Output identifiers: <code>"SYMBOL"</code>, <code>"ENTREZID"</code>, or <code>"ENSEMBL"</code>.</td>
+    </tr>
+    <tr>
+      <td><code>convert_organism</code></td>
+      <td>logical</td>
+      <td><code>FALSE</code></td>
+      <td>If <code>TRUE</code>, converts the result to <code>target_organism</code> via BioMart homology.</td>
+    </tr>
+    <tr>
+      <td><code>target_organism</code></td>
+      <td>character</td>
+      <td><em>NULL</em></td>
+      <td>Required when <code>convert_organism = TRUE</code>; choose <code>"human"</code> or <code>"mouse"</code>.</td>
+    </tr>
+    <tr>
+      <td><code>search_all_collections</code></td>
+      <td>logical</td>
+      <td><code>TRUE</code></td>
+      <td>Search across all MSigDB collections. Set to <code>FALSE</code> to restrict using <code>collection</code>/<code>subcollection</code>.</td>
+    </tr>
+    <tr>
+      <td><code>collection</code></td>
+      <td>character</td>
+      <td><em>NULL</em></td>
+      <td>One of <code>H</code>, <code>C1</code>, <code>C2</code>, <code>C3</code>, <code>C4</code>, <code>C5</code>, <code>C6</code>, <code>C7</code>, <code>C8</code> (when restricting).</td>
+    </tr>
+    <tr>
+      <td><code>subcollection</code></td>
+      <td>character</td>
+      <td><em>NULL</em></td>
+      <td>Optional subcategory (e.g., <code>CP:KEGG</code>, <code>CP:REACTOME</code>, <code>GO:BP</code>).</td>
+    </tr>
+    <tr>
+      <td><code>export_csv</code></td>
+      <td>logical</td>
+      <td><code>FALSE</code></td>
+      <td>If <code>TRUE</code>, writes each set to CSV in <code>output_dir</code>.</td>
+    </tr>
+    <tr>
+      <td><code>output_dir</code></td>
+      <td>character</td>
+      <td><code>"MSigDB_gene_lists/"</code></td>
+      <td>Destination for CSV export (created if missing).</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ============== -->
+<!-- Return values  -->
+<!-- ============== -->
+<h3>Return value</h3>
+
+<ul>
+  <li><strong>Single match:</strong> a character vector of gene identifiers (format per <code>gene_id_type</code>).</li>
+  <li><strong>Multiple matches:</strong> a named list of vectors. Rich metadata is attached at
+    <code>attr(result, "metadata")</code>:
+    <code>original_query</code>, <code>gene_set_name</code>, <code>collection</code>, <code>subcollection</code>,
+    <code>n_genes</code>, <code>organism</code>, <code>gene_id_type</code>, <code>query_date</code>.
+  </li>
+</ul>
+
+<pre>
+<code class="language-r">
+# Example: collect metadata into a data frame
+res  &lt;- extract_msigdb_genes(c("HALLMARK_APOPTOSIS", "HALLMARK_HYPOXIA", "REACTOME_TCA_CYCLE"))
+meta &lt;- attr(res, "metadata")
+summary_df &lt;- dplyr::bind_rows(lapply(meta, as.data.frame), .id = "set_label")
+summary_df
+</code>
+</pre>
+
+<!-- ===== -->
+<!-- Tips  -->
+<!-- ===== -->
+<h3>Practical notes</h3>
+
+<ul>
+  <li><strong>Pattern matching.</strong> If your query is a broad pattern (e.g., <code>"CELL_CYCLE"</code>), the function lists all matches and prefers exact set names when available. Otherwise, it selects the first match and reports alternatives.</li>
+  <li><strong>ID formats.</strong> Choose the ID type that fits your downstream tools: SYMBOL for readability, ENTREZ for many enrichment functions, ENSEMBL for genomic work.</li>
+  <li><strong>Cross-species.</strong> Homology mapping (human ↔ mouse) uses BioMart; not all genes map 1:1, so expect some dropouts or merges.</li>
+  <li><strong>Exports.</strong> Set <code>export_csv = TRUE</code> to archive per-set CSVs alongside the analysis.</li>
+  <li><strong>Versions &amp; licensing.</strong> Uses MSigDB via <code>msigdbr</code> (v2023.2+). Academic use is generally free; some curated sources (e.g., KEGG) may require a commercial license—check the
+    <a href="https://www.gsea-msigdb.org/gsea/msigdb/" target="_blank" rel="noopener">MSigDB site</a>.
+  </li>
+</ul>
+
+<!-- ========= -->
+<!-- See also  -->
+<!-- ========= -->
+<h3>See also</h3>
+<ul>
+  <li><a href="https://cran.r-project.org/package=msigdbr" target="_blank" rel="noopener">msigdbr (CRAN)</a> — MSigDB access from R</li>
+  <li><a href="https://www.gsea-msigdb.org/gsea/msigdb/human/genesets.jsp" target="_blank" rel="noopener">MSigDB Human Gene Sets</a> — browse collections</li>
+  <li><a href="https://bioconductor.org/packages/biomaRt" target="_blank" rel="noopener">biomaRt</a> — organism conversion (homology)</li>
+</ul>
+
+<!-- =========== -->
+<!-- References  -->
+<!-- =========== -->
+<h3>References</h3>
+<ul>
+  <li>Liberzon A. <em>et&nbsp;al.</em> The MSigDB hallmark gene set collection. <em>Cell Systems</em>. 2015;1(6):417–425.</li>
+  <li>Subramanian A. <em>et&nbsp;al.</em> Gene set enrichment analysis. <em>PNAS</em>. 2005;102(43):15545–15550.</li>
+</ul>
+
+<!-- Small footnote for implementers -->
+<p style="font-size:0.9em;color:#666;margin-top:0.75rem;">
+  <em>Implementation note.</em> Cross-species conversion in examples assumes a helper like <code>convert_gene_list()</code> is available in your codebase (BioMart-backed). Adjust to your preferred orthology strategy as needed.
+</p>
 
 
