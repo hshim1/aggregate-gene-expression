@@ -79,31 +79,45 @@ A lightweight and simple workflow/pipeline in R for extracting gene lists of int
 </p>
 
 <!-- ------------------------------- -->
-<!-- Compact summary (what & source) -->
+<!-- Compact summary (Package/Source) -->
 <!-- ------------------------------- -->
-<table style="width:100%; border-collapse:collapse;">
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.2;">
   <thead>
     <tr>
-      <th style="text-align:left; border-bottom:1px solid #ddd;">Package</th>
-      <th style="text-align:left; border-bottom:1px solid #ddd;">Source</th>
-      <th style="text-align:left; border-bottom:1px solid #ddd;">Purpose</th>
+      <th style="text-align:left; border-bottom:1px solid #ddd; padding:4px 8px;">Package</th>
+      <th style="text-align:left; border-bottom:1px solid #ddd; padding:4px 8px;">Source</th>
+      <th style="text-align:left; border-bottom:1px solid #ddd; padding:4px 8px;">Package</th>
+      <th style="text-align:left; border-bottom:1px solid #ddd; padding:4px 8px;">Source</th>
     </tr>
   </thead>
   <tbody>
-    <tr><td><code>pheatmap</code></td><td>CRAN</td><td>Publication-quality heatmaps</td></tr>
-    <tr><td><code>RColorBrewer</code></td><td>CRAN</td><td>Color palettes for figures</td></tr>
-    <tr><td><code>dplyr</code></td><td>CRAN</td><td>Data manipulation (part of tidyverse)</td></tr>
-    <tr><td><code>ggplot2</code></td><td>CRAN</td><td>Grammar of graphics plotting</td></tr>
-    <tr><td><code>tidyverse</code></td><td>CRAN</td><td>Data science toolkit (ggplot2, dplyr, readr, etc.)</td></tr>
-    <tr><td><code>patchwork</code></td><td>CRAN</td><td>Compose multiple ggplots</td></tr>
-    <tr><td><code>matrixStats</code></td><td>CRAN</td><td>Fast row/column summaries for matrices</td></tr>
-    <tr><td><code>biomaRt</code></td><td>Bioconductor</td><td>Programmatic access to Ensembl</td></tr>
-    <tr><td><code>clusterProfiler</code></td><td>Bioconductor</td><td>Enrichment analysis (GO/KEGG/Reactome/MSigDB)</td></tr>
-    <tr><td><code>org.Hs.eg.db</code></td><td>Bioconductor</td><td>Human gene annotations</td></tr>
-    <tr><td><code>org.Mm.eg.db</code></td><td>Bioconductor</td><td>Mouse gene annotations</td></tr>
-    <tr><td><code>BiocManager</code></td><td>CRAN</td><td>Installer for Bioconductor packages</td></tr>
+    <tr>
+      <td style="padding:4px 8px;"><code>pheatmap</code></td><td style="padding:4px 8px;">CRAN</td>
+      <td style="padding:4px 8px;"><code>RColorBrewer</code></td><td style="padding:4px 8px;">CRAN</td>
+    </tr>
+    <tr>
+      <td style="padding:4px 8px;"><code>dplyr</code></td><td style="padding:4px 8px;">CRAN</td>
+      <td style="padding:4px 8px;"><code>ggplot2</code></td><td style="padding:4px 8px;">CRAN</td>
+    </tr>
+    <tr>
+      <td style="padding:4px 8px;"><code>tidyverse</code></td><td style="padding:4px 8px;">CRAN</td>
+      <td style="padding:4px 8px;"><code>patchwork</code></td><td style="padding:4px 8px;">CRAN</td>
+    </tr>
+    <tr>
+      <td style="padding:4px 8px;"><code>matrixStats</code></td><td style="padding:4px 8px;">CRAN</td>
+      <td style="padding:4px 8px;"><code>biomaRt</code></td><td style="padding:4px 8px;">Bioconductor</td>
+    </tr>
+    <tr>
+      <td style="padding:4px 8px;"><code>clusterProfiler</code></td><td style="padding:4px 8px;">Bioconductor</td>
+      <td style="padding:4px 8px;"><code>org.Hs.eg.db</code></td><td style="padding:4px 8px;">Bioconductor</td>
+    </tr>
+    <tr>
+      <td style="padding:4px 8px;"><code>org.Mm.eg.db</code></td><td style="padding:4px 8px;">Bioconductor</td>
+      <td style="padding:4px 8px;"><code>BiocManager</code></td><td style="padding:4px 8px;">CRAN</td>
+    </tr>
   </tbody>
 </table>
+
 
 <!-- ============================================= -->
 <!--   Required Packages / Dependencies (R)        -->
