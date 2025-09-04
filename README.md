@@ -1,7 +1,16 @@
 # aggregate-gene-expression-hshim1
 
-Workflow created by: Ha-Na Shim
-Date: 09/03/2025
+<div style="max-width:640px; padding:14px 16px; border:1px solid #e5e7eb; border-radius:12px; background:#f9fafb; font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;">
+  <h3 style="margin:0 0 8px 0; font-size:18px; line-height:1.3;">Workflow Metadata</h3>
+  <div style="display:grid; grid-template-columns:140px 1fr; gap:6px 14px; font-size:14px;">
+    <div style="color:#6b7280;">Created by</div>
+    <div><strong>Ha-Na Shim</strong></div>
+    <div style="color:#6b7280;">Date</div>
+    <div><time datetime="2025-09-03">09/03/2025</time></div>
+    <div style="color:#6b7280;">Email</div>
+    <div><a href="mailto:hshim1@uchicago.edu">hshim1@uchicago.edu</a></div>
+  </div>
+</div>
 
 ## Tools / Packages Used
 
