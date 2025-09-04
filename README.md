@@ -76,6 +76,8 @@ extract_GO_genes
 extract_msigdb_genes
 compile_gene_lists
 
+# Part 1: Creating lists of genes of interest
+
 <h2>Extracting GO Gene Sets with <code>extract_GO_genes</code></h2>
 
 <p>
