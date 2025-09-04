@@ -105,62 +105,6 @@ A lightweight and simple workflow/pipeline in R for extracting gene lists of int
   </tbody>
 </table>
 
-<!-- ----------------------------- -->
-<!-- Install: CRAN + Bioc missing  -->
-<!-- ----------------------------- -->
-<h3>Install (CRAN + Bioconductor)</h3>
-
-<pre>
-<code class="language-r">
-# --- CRAN packages ---
-cran_pkgs &lt;- c(
-  "pheatmap", "RColorBrewer", "dplyr", "ggplot2",
-  "tidyverse", "patchwork", "matrixStats", "BiocManager"
-)
-
-# Install CRAN packages that are not already present
-to_install_cran &lt;- setdiff(cran_pkgs, rownames(installed.packages()))
-if (length(to_install_cran)) {
-  install.packages(to_install_cran, Ncpus = getOption("Ncpus", 1L))
-}
-
-# --- Bioconductor packages ---
-if (!requireNamespace("BiocManager", quietly = TRUE)) {
-  install.packages("BiocManager")
-}
-
-bioc_pkgs &lt;- c("biomaRt", "clusterProfiler", "org.Hs.eg.db", "org.Mm.eg.db")
-
-# Install Bioconductor packages that are not already present
-to_install_bioc &lt;- setdiff(bioc_pkgs, rownames(installed.packages()))
-if (length(to_install_bioc)) {
-  BiocManager::install(to_install_bioc, update = FALSE, ask = FALSE)
-}
-</code>
-</pre>
-
-<!-- ----------------------------- -->
-<!-- Load & verify                 -->
-<!-- ----------------------------- -->
-<h3>Load &amp; verify</h3>
-
-<pre>
-<code class="language-r">
-# Load libraries used throughout the workflow
-library(pheatmap)
-library(RColorBrewer)
-library(dplyr)
-library(ggplot2)
-library(tidyverse)
-library(patchwork)
-library(matrixStats)
-
-# Bioconductor
-library(biomaRt)
-library(clusterProfiler)
-library(org.Hs.eg.db)
-library(org.Mm.eg.db)
-
 ## Repository structure
 
 extract_GO_genes
