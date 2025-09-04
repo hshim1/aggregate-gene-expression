@@ -144,9 +144,104 @@ BiocManager::install(c(
 
 ## Repository structure
 
-extract_GO_genes
-extract_msigdb_genes
-compile_gene_lists
+<!-- ======================================= -->
+<!--        Repository Structure (HTML)      -->
+<!-- ======================================= -->
+
+<h2 id="repo-structure">Repository structure</h2>
+
+<p>
+  This repository is organized for clarity and reproducibility. Reusable functions live in
+  <code>functions/</code>, a worked example is provided in <code>example_workflow/</code>, and any
+  precomputed gene lists are stored in <code>extracted_gene_lists/</code>. A quick tree and
+  brief descriptions are below.
+</p>
+
+<!-- Compact tree view -->
+<pre style="background:#0b1021;color:#e6e6e6;padding:14px 16px;border-radius:10px;line-height:1.35;overflow:auto;">
+<code>
+.
+├─ <strong>functions/</strong>
+│  ├─ extract_GO_genes.R
+│  ├─ extract_msigdb_genes.R
+│  ├─ compile_gene_lists.R
+│  ├─ create_aggregate_lineplot.R
+│  ├─ create_clustered_heatmap.R
+│  └─ compiled_functions_hshim1_v3.R
+│
+├─ <strong>example_workflow/</strong>
+│  ├─ example_workflow.Rmd
+│  └─ example_workflow.html   (knitted output)
+│
+└─ <strong>extracted_gene_lists/</strong>
+   └─ combined_muscle_gene_lists.csv
+</code>
+</pre>
+
+<!-- Folder-by-folder descriptions -->
+<h3 style="margin-top:1.25rem;">Folders &amp; key files</h3>
+
+<ul>
+  <li>
+    <p style="margin-bottom:6px;"><code><strong>functions/</strong></code> — self-contained functions used across the workflow.</p>
+    <ul>
+      <li><code>extract_GO_genes.R</code> — retrieve gene sets for Gene Ontology (GO) terms (supports descendants via GO hierarchy; Ensembl BioMart backend).</li>
+      <li><code>extract_msigdb_genes.R</code> — fetch gene sets from MSigDB (Hallmark, KEGG, Reactome, GO, etc.) with flexible ID types and optional cross-species mapping.</li>
+      <li><code>compile_gene_lists.R</code> — consolidate/merge curated gene lists (e.g., combine muscle-related sets into a single reference CSV or list object).</li>
+      <li><code>create_aggregate_lineplot.R</code> — generate aggregate time-course/condition line plots from gene sets (e.g., mean/median expression with confidence bands).</li>
+      <li><code>create_clustered_heatmap.R</code> — build clustered heatmaps for selected gene panels with publication-grade settings.</li>
+      <li><code>compiled_functions_hshim1_v3.R</code> — convenience script bundling all functions into one file for quick sourcing in fresh environments.</li>
+    </ul>
+  </li>
+
+  <li style="margin-top:10px;">
+    <p style="margin-bottom:6px;"><code><strong>example_workflow/</strong></code> — minimal, runnable example of the pipeline.</p>
+    <ul>
+      <li><code>example_workflow.Rmd</code> — end-to-end vignette demonstrating how to load functions, fetch gene sets, and produce figures.</li>
+      <li><code>example_workflow.html</code> — knitted HTML output for quick preview of results without running the code.</li>
+    </ul>
+  </li>
+
+  <li style="margin-top:10px;">
+    <p style="margin-bottom:6px;"><code><strong>extracted_gene_lists/</strong></code> — precomputed/reference gene lists.</p>
+    <ul>
+      <li><code>combined_muscle_gene_lists.csv</code> — compiled muscle-related gene set used throughout the figures/examples.</li>
+    </ul>
+  </li>
+</ul>
+
+<!-- How to source & run (concise, optional) -->
+<details>
+  <summary><strong>Quick start</strong> (source functions &amp; run the example)</summary>
+  <div style="margin-top:8px;">
+    <ol>
+      <li>Install dependencies (CRAN + Bioconductor), see the “Required packages / dependencies” section.</li>
+      <li>In a fresh R session, source either individual functions or the bundled script:
+        <pre><code class="language-r">
+# Option A: source only what you need
+source("functions/extract_GO_genes.R")
+source("functions/extract_msigdb_genes.R")
+source("functions/create_clustered_heatmap.R")
+
+# Option B: source all at once
+source("functions/compiled_functions_hshim1_v3.R")
+        </code></pre>
+      </li>
+      <li>Knit or open the example:
+        <pre><code class="language-r">
+rmarkdown::render("example_workflow/example_workflow.Rmd")  # produces example_workflow.html
+        </code></pre>
+      </li>
+    </ol>
+  </div>
+</details>
+
+<!-- Small housekeeping notes -->
+<p style="font-size:0.9em;color:#666;margin-top:0.75rem;">
+  <em>Notes.</em> Figures and intermediate outputs are not committed by default if your <code>.gitignore</code> excludes them; adjust as needed. 
+  Consider using a project-local environment manager (e.g., <code>renv</code>) for reproducible package versions.
+</p>
+
 
 # Part 1: Creating lists of genes of interest
 
