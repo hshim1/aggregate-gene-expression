@@ -155,6 +155,131 @@ Ashburner et al., <em>Nat Genet</em>, 2000. <br>
 The Gene Ontology Consortium, <em>Nucleic Acids Res</em>, 2019.
 </p>
 
+<!-- ================================ -->
+<!-- MSigDB (Molecular Signatures DB) -->
+<!-- ================================ -->
+
+<h2 id="msigdb-overview">MSigDB: Curated Gene Sets for Enrichment Analyses</h2>
+
+<p>
+  The <strong>Molecular Signatures Database (MSigDB)</strong> is a widely used collection of expert-curated and community-contributed gene sets designed for pathway and enrichment analyses (e.g., GSEA, fgsea, clusterProfiler). 
+  It organizes thousands of gene sets into thematic collections—Hallmark biology, curated pathways (KEGG, Reactome, WikiPathways), regulatory targets, ontology terms, and more—so you can move from a list of differentially expressed genes to interpretable biology with confidence.
+  Explore the human collections here: 
+  <a href="https://www.gsea-msigdb.org/gsea/msigdb/human/genesets.jsp" target="_blank" rel="noopener noreferrer">
+    gsea-msigdb.org › msigdb › human › genesets
+  </a>.
+</p>
+
+<p>
+  In practice, MSigDB shines when you need <em>clean, reproducible</em> definitions of pathways or biological programs—whether that’s a compact Hallmark signature for a figure, or a comprehensive GO category for a hypothesis test. The structure below shows how the database is organized; each collection groups gene sets with a shared purpose or source.
+</p>
+
+<hr>
+
+<h3 id="msigdb-collections">MSigDB Collections (Human)</h3>
+
+<!-- Tip: Use details/summary blocks for a tidy, scannable outline on GitHub -->
+<details open>
+  <summary><strong>H — Hallmark gene sets</strong> <em>(50 gene sets)</em></summary>
+  <p style="margin: 0.5rem 0 0;">
+    Compact, non-redundant “consensus” signatures that capture major biological states and processes.
+  </p>
+</details>
+
+<details>
+  <summary><strong>C1 — Positional gene sets</strong> <em>(302 gene sets)</em></summary>
+  <p style="margin: 0.5rem 0 0;">
+    Genes grouped by chromosomal location.
+  </p>
+  <p style="margin: 0.25rem 0 0;">
+    <strong>Chromosomes:</strong> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 X Y MT
+  </p>
+</details>
+
+<details>
+  <summary><strong>C2 — Curated gene sets</strong> <em>(7,561 gene sets)</em></summary>
+  <ul>
+    <li><strong>CGP</strong> — Chemical &amp; genetic perturbations <em>(3,538)</em></li>
+    <li><strong>CP</strong> — Canonical pathways <em>(4,023)</em>, including:
+      <ul>
+        <li><strong>CP:BIOCARTA</strong> <em>(292)</em></li>
+        <li><strong>CP:KEGG_MEDICUS</strong> <em>(658)</em></li>
+        <li><strong>CP:PID</strong> <em>(196)</em></li>
+        <li><strong>CP:REACTOME</strong> <em>(1,787)</em></li>
+        <li><strong>CP:WIKIPATHWAYS</strong> <em>(885)</em></li>
+        <li><strong>CP:KEGG_LEGACY</strong> <em>(186)</em></li>
+      </ul>
+    </li>
+  </ul>
+</details>
+
+<details>
+  <summary><strong>C3 — Regulatory gene sets</strong> <em>(3,713 gene sets)</em></summary>
+  <ul>
+    <li><strong>MIR</strong> — microRNA targets <em>(2,598)</em>
+      <ul>
+        <li><strong>MIR:MIRDB</strong> <em>(2,377)</em></li>
+        <li><strong>MIR:MIR_LEGACY</strong> <em>(221)</em></li>
+      </ul>
+    </li>
+    <li><strong>TFT</strong> — Transcription factor targets <em>(1,115)</em>
+      <ul>
+        <li><strong>TFT:GTRD</strong> <em>(505)</em></li>
+        <li><strong>TFT:TFT_LEGACY</strong> <em>(610)</em></li>
+      </ul>
+    </li>
+  </ul>
+</details>
+
+<details>
+  <summary><strong>C4 — Computational gene sets</strong> <em>(1,006 gene sets)</em></summary>
+  <ul>
+    <li><strong>3CA</strong> — Curated Cancer Cell Atlas <em>(148)</em></li>
+    <li><strong>CGN</strong> — Cancer gene neighborhoods <em>(427)</em></li>
+    <li><strong>CM</strong> — Cancer modules <em>(431)</em></li>
+  </ul>
+</details>
+
+<details>
+  <summary><strong>C5 — Ontology gene sets</strong> <em>(16,228 gene sets)</em></summary>
+  <ul>
+    <li><strong>GO</strong> — Gene Ontology <em>(10,480)</em>
+      <ul>
+        <li><strong>GO:BP</strong> — Biological Process <em>(7,583)</em></li>
+        <li><strong>GO:CC</strong> — Cellular Component <em>(1,042)</em></li>
+        <li><strong>GO:MF</strong> — Molecular Function <em>(1,855)</em></li>
+      </ul>
+    </li>
+    <li><strong>HPO</strong> — Human Phenotype Ontology <em>(5,748)</em></li>
+  </ul>
+</details>
+
+<details>
+  <summary><strong>C6 — Oncogenic signatures</strong> <em>(189 gene sets)</em></summary>
+  <p style="margin: 0.5rem 0 0;">
+    Gene sets capturing oncogene activation and cancer-relevant programs.
+  </p>
+</details>
+
+<details>
+  <summary><strong>C7 — Immunologic signatures</strong> <em>(5,219 gene sets)</em></summary>
+  <ul>
+    <li><strong>IMMUNESIGDB</strong> — ImmuneSigDB <em>(4,872)</em></li>
+    <li><strong>VAX</strong> — Vaccine response signatures <em>(347)</em></li>
+  </ul>
+</details>
+
+<details>
+  <summary><strong>C8 — Cell type signatures</strong> <em>(866 gene sets)</em></summary>
+  <p style="margin: 0.5rem 0 0;">
+    Reference gene sets for cell identity and composition analyses.
+  </p>
+</details>
+
+<p style="margin-top: 0.75rem; font-size: 0.9em; color: #666;">
+  <em>Note.</em> Counts shown above reflect the breakdown provided for the human MSigDB collections. For the latest tallies and updates, see the official MSigDB site: 
+  <a href="https://www.gsea-msigdb.org/gsea/msigdb/human/genesets.jsp" target="_blank" rel="noopener noreferrer">MSigDB Human Gene Sets</a>.
+</p>
 
 
 
