@@ -70,7 +70,7 @@ A lightweight and simple workflow/pipeline in R for extracting gene lists of int
 
 ## Required packages and dependencies
 
-## Functions in this repository
+## Repository structure
 
 extract_GO_genes
 extract_msigdb_genes
