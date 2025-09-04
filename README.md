@@ -140,16 +140,6 @@ muscle_development <- extract_GO_genes(
   <li><strong>"data.frame"</strong> → table with columns: gene_symbol, go_label, go_id, go_name</li>
 </ul>
 
-<pre>
-<code class="language-r">
-# Example: Accessing metadata
-md <- attr(muscle_development, "metadata")
-str(md[1])
-</code>
-</pre>
-
-<hr>
-
 <p><strong>References:</strong><br>
 Ashburner et al., <em>Nat Genet</em>, 2000. <br>
 The Gene Ontology Consortium, <em>Nucleic Acids Res</em>, 2019.
