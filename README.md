@@ -1,7 +1,7 @@
 # aggregate-gene-expression-hshim1
 
 <p><strong>Analysis and pipeline prepared by:</strong> Ha-Na Shim</p>
-<p><strong>Contact:</strong> hshim1@uchicago.edu for questions, feedback, or suggestions regarding this workflow.</p>
+<p><strong>Contact:</strong> hshim1@outlook.com for questions, feedback, or suggestions regarding this workflow.</p>
 
 ## Tools / Packages Used
 
